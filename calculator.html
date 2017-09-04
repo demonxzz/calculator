@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>贷款计算器</title>
+<link rel="stylesheet" type="text/css" href="css/lib/weui.min.css">
+<link rel="stylesheet" type="text/css" href="css/lib/jquery-weui.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript">
+	document.addEventListener('plusready', function() {
+		//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+	});
+</script>
+</head>
+
+<body style="background: #fff;">
+<div class="wrap">
+	<div class="weui_tab">
+		<div class="weui_navbar">
+			<a href="#tab1" class="weui_navbar_item weui_bar_item_on weui_specil_a1">车贷计算</a>
+			<a href="#tab3" class="weui_navbar_item weui_specil_a2">房贷计算</a>
+		</div>
+		<div class="weui_tab_bd">
+			<div class="weui_tab_bd_item weui_tab_bd_item_active" id="tab1">
+				<div class="loan-content">
+					<div class="loan-nums" style="border-top: none;">
+						<p class="p3"></p>
+					</div>
+				</div>
+				<div class="loan-content">
+
+					<div class="loan-nums" style="border-top: none;">
+						<p class="p3">车辆信息</p>
+						<div class="weui_cell" style="border-top: none;">
+							<div class="weui_cell_hd">
+								<label class="weui_label" for="name">车价</label>
+							</div>
+							<div class="weui_cell_bd weui_cell_primary" style="text-align: center;">
+								<input type="tel" id="zhsydk" value="" class="weui_input" style="width: 84%;">
+								<p class="right">万元</p>
+							</div>
+						</div>
+						<div class="weui_cell" >
+							<div class="weui_cell_hd">
+								<label class="weui_label" for="name">排量</label>
+							</div>
+							<div class="weui_cell_bd weui_cell_primary" style="text-align: center;">
+								<input type="text" value="1.6及以内" id="xs3" onclick="selectrateZHSY()" class="weui_input" readonly="">
+								<p class="right"><img src="images/fyxq_tb02.png" width="8" / style="margin-top: 4px;"></p>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="loan-details">
+					<div class="left" style="width: 50%;">
+						<ul>
+							<li>贷款信息</li>
+							<li>
+								<span class="p1">车价：</span>
+								<span class="p2" id="carprice">0.00 </span><span>元</span>
+							</li>
+							<li>
+								<span class="p1">购置税：</span>
+								<span class="p2" id="purchase">0 </span><span>元</span>
+							</li>
+							<li>
+								<span class="p1">保险：</span>
+								<span class="p2" id="safety">0.00 </span><span>元</span>
+							</li>
+						
+						</ul>
+					</div>
+					<div class="left" style="width: 50%;">
+						<ul>
+							<li> &nbsp;</li>
+							<li>
+								<span class="p1">融资额：</span>
+								<span class="p2" id="financing">0.00 </span><span>元</span>
+							</li>
+							<li>
+								<span class="p1">首付：</span>
+								<span class="p2" id="down_payment">0 </span><span>元</span>
+							</li>
+							<li>
+								<span class="p1">月供：</span>
+								<span class="p2" id="monthly_payment">0.00 </span><span>元/月</span>
+							</li>
+							
+						</ul>
+					</div>
+					<p class="p1 right" style="font-size: 12px;">（以上计算结果仅供参考，实际费用以具体成交为准）</p>
+					<div class="clear"></div>
+				</div>
+				
+				<div class="loan-but">
+					<a class="weui_btn weui_btn_mini weui_btn_primary mr10" href="javascript:void(0)" onclick="jisuan()">开始计算</a>			
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<script src="js/lib/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/lib/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/math.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/loan.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+function selectrateZHSY() {
+jQuery.actions({
+  title: "选择排量",
+  onClose: function() {
+    console.log("close");
+  },actions: [
+    {
+      text: "1.6及以内",
+      className: "text-04",
+      onClick: function() {
+
+       	var rate = "1.6及以内";
+	
+		$("#xs3").val(rate);
+      	
+	  }
+    },{
+      text: "1.6以上",
+      className: 'text-03',
+      onClick: function() {
+
+        var rate = "1.6以上";
+		
+		$("#xs3").val(rate);
+		
+      }
+    }
+    ]
+})
+}
+
+</script>
+	</body>
+
+</html>
