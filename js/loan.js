@@ -46,9 +46,7 @@ function jisuan() {
 	}
 
 	//融资额
-	var financing = 0.00;
-
-	financing = Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.8);
+    var financing = Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.8);
 
 	//首付
 	var down_payment = 0.00;
@@ -67,6 +65,14 @@ function jisuan() {
 		monthly_payment = Math.mul(Math.div(financing, 10000), 347);
 	}
 
+	//返利
+
+	var temp_1 = Math.mul(Math.sub(financing, 1000), 0.03);
+
+    var temp_2 = Math.mul(Math.sub(safety, 1100), 0.2);
+
+    var rebate = Math.add(temp_1, temp_2);
+
 	$("#carprice").text(carPrice);
 
 	$("#purchase").text(money_round(purchase, 2, 2));
@@ -78,4 +84,6 @@ function jisuan() {
 	$("#down_payment").text(money_round(down_payment, 2, 2));
 
 	$("#monthly_payment").text(money_round(monthly_payment, 2, 2));
+
+	$("#rebate").text(money_round(rebate, 2, 2));
 }
