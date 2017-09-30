@@ -48,7 +48,17 @@ function jisuan() {
 	//融资额
 	var financing = 0.00;
 
-	financing = Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.8);
+	//弹性参数 用于计算融资额
+	var springVar = Math.mul(carPrice, 0.05);
+
+	if(springVar <= 5000)
+	{
+		financing = Math.add(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.8), springVar);
+	}else
+	{
+		financing = Math.add(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.8), 5000);
+	}
+
 
 	//首付
 	var down_payment = 0.00;
@@ -60,16 +70,8 @@ function jisuan() {
 	{
 		down_payment = Math.sub(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 0) ;
 
-		//弹性参数 用于计算月供
-		var springVar = Math.mul(carPrice, 0.05);
-
-		if(springVar >= 5000)
-		{
-			monthly_payment = Math.mul(Math.div(Math.add(financing, 5000), 10000), 348.4);
-		}else
-		{
-			monthly_payment = Math.mul(Math.div(Math.add(financing, springVar), 10000), 348.4);
-		}
+		monthly_payment = Math.mul(Math.div(Math.add(financing, 0), 10000), 348.4);
+		
 	}else{
 		down_payment = Math.add(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 3000);
 
