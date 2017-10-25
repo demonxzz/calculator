@@ -68,12 +68,12 @@ function jisuan() {
 
 	if(financing < 150000)
 	{
-		down_payment = Math.sub(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 0) ;
+		down_payment = Math.add(Math.sub(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 0), 1000);
 
 		monthly_payment = Math.mul(Math.div(Math.add(financing, 0), 10000), 348.4);
 		
 	}else{
-		down_payment = Math.add(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 3000);
+		down_payment = Math.add(Math.add(Math.mul(Math.add(Math.add(carPrice, purchase), safety), 0.2), 3000), 1000);
 
 		monthly_payment = Math.mul(Math.div(financing, 10000), 347);
 	}
